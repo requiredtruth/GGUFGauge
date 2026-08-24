@@ -54,3 +54,12 @@ Donations directly fund additional RequiredTruth development time and increase h
 After a confirmed donation, you may open a GitHub issue with the asset, network, transaction hash, and the specific area you want expanded. The first issue claiming an unclaimed confirmed inbound transaction is accepted as its request attribution. A transaction hash is public and this rule is operational attribution, not cryptographic proof of wallet ownership. Never post a private key or seed phrase.
 
 Apache-2.0 licensed.
+
+
+## Install and run
+
+```sh
+chmod +x install.sh run.sh
+./install.sh
+./run.sh --help
+```
