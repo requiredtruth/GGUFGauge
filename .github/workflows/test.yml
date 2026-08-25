@@ -19,3 +19,4 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - run: python -m unittest discover -s tests -v
+      - run: chmod +x install.sh run.sh cli.sh && ./run.sh --demo

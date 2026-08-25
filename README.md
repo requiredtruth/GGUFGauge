@@ -17,20 +17,29 @@ Static calculators make you enter a RAM or VRAM number. GGUFGauge measures the m
 
 It does not promise that an estimate equals runtime allocation. Backend buffers, model architecture, mmap behavior, batch size, GPU offload, and cache implementation can change real usage.
 
+## Run the GUI
+
+```sh
+chmod +x install.sh run.sh cli.sh
+./run.sh
+```
+
+`run.sh` auto-installs when needed and opens a PySide6 dashboard with live status, progress, errors, model selection, RAM/KV controls, selected-model analysis, and a complete generated synthetic GGUF demo. Headless demo: `./run.sh --demo`. CLI-only commands use `./cli.sh MODEL.gguf [options]`.
+
 ## Run
 
 ```bash
-python -m ggufgauge /models/model.gguf
-python -m ggufgauge /models/model.gguf --json
-python -m ggufgauge /models/model.gguf --kv-type q8_0 --emit-command
+./cli.sh /models/model.gguf
+./cli.sh /models/model.gguf --json
+./cli.sh /models/model.gguf --kv-type q8_0 --emit-command
 ```
 
 Useful overrides:
 
 ```bash
-python -m ggufgauge model.gguf --ram-gib 12 --reserve-percent 20
-python -m ggufgauge model.gguf --context 2048 --context 4096 --context 8192
-python -m ggufgauge model.gguf --executable /opt/llama.cpp/llama-server
+./cli.sh model.gguf --ram-gib 12 --reserve-percent 20
+./cli.sh model.gguf --context 2048 --context 4096 --context 8192
+./cli.sh model.gguf --executable /opt/llama.cpp/llama-server
 ```
 
 `--ram-gib` is for planning another machine. Without it, the detector uses the smaller of host `MemAvailable` and remaining cgroup memory. The recommended context never exceeds the GGUF training context when that metadata is present.
