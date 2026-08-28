@@ -42,7 +42,7 @@ Useful overrides:
 ./cli.sh model.gguf --executable /opt/llama.cpp/llama-server
 ```
 
-`--ram-gib` is for planning another machine. Without it, the detector uses the smaller of host `MemAvailable` and remaining cgroup memory. The recommended context never exceeds the GGUF training context when that metadata is present.
+`--ram-gib` is for planning another machine. Without it, the detector uses the smaller of host `MemAvailable` and remaining cgroup memory. On cgroup v2 it resolves the current process scope from `/proc/self/cgroup` and checks every ancestor, so nested container and service limits are included. The selected limiting scope is exposed as `capacity.cgroup_path` in JSON output. The recommended context never exceeds the GGUF training context when that metadata is present.
 
 ## Supported metadata
 
